@@ -4,9 +4,9 @@
     <string name="register">Regisztráció</string>
     <string name="title">Doggo Sessions</string>
     <string name="fullname">Teljes név</string>
-    <string name="sAddress">Lakcím</string>
+    <string name="address">Lakcím</string>
     <string name="email">E-mail cím</string>
-    <string name="sphoneNumber">Telefonszám</string>
+    <string name="phoneNumber">Telefonszám</string>
     <string name="username">Felhasználónév</string>
     <string name="password">Jelszó</string>
     <string name="login_here">A bejelentkezéshez kattintson ide!</string>
