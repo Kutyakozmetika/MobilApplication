@@ -57,21 +57,21 @@ public class Login extends AppCompatActivity {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
                             String[] field = new String[2];
-                            field[0] = "felhasznalo";
+                            field[0] = "felhasznalonev";
                             field[1] = "jelszo";
                             //Creating array for data
                             String[] data = new String[2];
                             data[0] = username;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://10.0.11.111/kutyakozmetikaphp/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://10.0.11.106/kutyakozmetikaphp/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);
                                     String result = putData.getResult();
                                     if(result.equals("Login Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), Registration.class);
                                         intent.putExtra("Username", username);
                                         startActivity(intent);
                                         finish();
