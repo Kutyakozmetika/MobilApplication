@@ -7,25 +7,25 @@ class DataBase
     public $data;
     private $sql;
     protected $servername;
-    protected $felhasznalonev;
-    protected $jelszo;
+    protected $username;
+    protected $password;
     protected $databasename;
 
     public function __construct()
     {
-        $this->connect = null;
+         $this->connect = null;
         $this->data = null;
         $this->sql = null;
         $dbc = new DataBaseConfig();
         $this->servername = $dbc->servername;
-        $this->felhasznalonev = $dbc->felhasznalonev;
-        $this->jelszo = $dbc->jelszo;
+        $this->username = $dbc->username;
+        $this->password = $dbc->password;
         $this->databasename = $dbc->databasename;
     }
 
     function dbConnect()
     {
-        $this->connect = mysqli_connect($this->servername, $this->felhasznalonev, $this->jelszo, $this->databasename);
+         $this->connect = mysqli_connect($this->servername, $this->username, $this->password, $this->databasename);
         return $this->connect;
     }
 
