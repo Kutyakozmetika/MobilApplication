@@ -62,8 +62,8 @@ class DataBase
         $jelszo = $this->prepareData($jelszo);
         $jelszo = password_hash($jelszo, PASSWORD_DEFAULT);
         $this->sql =
-            "INSERT INTO " . $table . " (nev, cim, email, telefonszam, felhasznalonev, jelszo,  ) 
-			VALUES ('" . $nev . "','" . $cim . "','" . $email . "','" . $telefonszam . "','" . $felhasznalonev . "','" . $jelszo . "',)";
+            "INSERT INTO " . $table . " (nev, cim, email, telefonszam, felhasznalonev, jelszo) 
+			VALUES ('" . $nev . "','" . $cim . "','" . $email . "','" . $telefonszam . "','" . $felhasznalonev . "','" . $jelszo . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
