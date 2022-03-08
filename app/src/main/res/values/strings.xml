@@ -10,4 +10,5 @@
     <string name="username">Felhasználónév</string>
     <string name="password">Jelszó</string>
     <string name="login_here">A bejelentkezéshez kattintson ide!</string>
+    <string name="register_here">Regisztrálás itt</string>
 </resources>

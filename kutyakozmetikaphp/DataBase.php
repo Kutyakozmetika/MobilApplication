@@ -18,14 +18,14 @@ class DataBase
         $this->sql = null;
         $dbc = new DataBaseConfig();
         $this->servername = $dbc->servername;
-        $this->username = $dbc->username;
-        $this->password = $dbc->password;
+        $this->felhasznalonev = $dbc->felhasznalonev;
+        $this->jelszo = $dbc->jelszo;
         $this->databasename = $dbc->databasename;
     }
 
     function dbConnect()
     {
-        $this->connect = mysqli_connect($this->servername, $this->username, $this->password, $this->databasename);
+        $this->connect = mysqli_connect($this->servername, $this->felhasznalonev, $this->jelszo, $this->databasename);
         return $this->connect;
     }
 
@@ -34,17 +34,17 @@ class DataBase
         return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
     }
 
-    function logIn($table, $username, $password)
+    function logIn($table, $felhasznalonev, $jelszo)
     {
-        $username = $this->prepareData($username);
-        $password = $this->prepareData($password);
-        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
+        $felhasznalonev = $this->prepareData($felhasznalonev);
+        $jelszo = $this->prepareData($jelszo);
+        $this->sql = "select * from " . $table . " where felhasznalonev = '" . $felhasznalonev . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) != 0) {
-            $dbusername = $row['username'];
-            $dbpassword = $row['password'];
-            if ($dbusername == $username && password_verify($password, $dbpassword)) {
+            $dbusername = $row['felhasznalonev'];
+            $dbpassword = $row['jelszo'];
+            if ($dbusername == $felhasznalonev && password_verify($jelszo, $dbpassword)) {
                 $login = true;
             } else $login = false;
         } else $login = false;
@@ -62,8 +62,8 @@ class DataBase
         $jelszo = $this->prepareData($jelszo);
         $jelszo = password_hash($jelszo, PASSWORD_DEFAULT);
         $this->sql =
-            "INSERT INTO " . $table . " (nev, cim, email, telefonszam, felhasznalonev, jelszo,  ) 
-			VALUES ('" . $nev . "','" . $cim . "','" . $email . "','" . $telefonszam . "','" . $felhasznalonev . "','" . $jelszo . "',)";
+            "INSERT INTO " . $table . " (nev, cim, email, telefonszam, felhasznalonev, jelszo) 
+			VALUES ('" . $nev . "','" . $cim . "','" . $email . "','" . $telefonszam . "','" . $felhasznalonev . "','" . $jelszo . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
