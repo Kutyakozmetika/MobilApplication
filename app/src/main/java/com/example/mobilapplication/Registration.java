@@ -16,6 +16,7 @@ public class Registration extends AppCompatActivity {
     TextInputEditText textInputEditTextFullname, textInputEditTextUsername,textInputEditTextPassword,textInputEditTextEmail, textInputLayoutAddress, textInputLayoutPhoneNumber;
     Button registerButton;
     RegisterUser registerUser;
+    TextView loginText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,17 @@ public class Registration extends AppCompatActivity {
         textInputLayoutPhoneNumber = findViewById(R.id.phoneNumber);
         textInputEditTextUsername = findViewById(R.id.username);
         textInputEditTextPassword = findViewById(R.id.password);
+        loginText = findViewById(R.id.loginText);
+
+        loginText.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         registerButton = findViewById(R.id.registerButton);
