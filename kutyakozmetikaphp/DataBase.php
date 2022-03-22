@@ -68,6 +68,19 @@ class DataBase
             return true;
         } else return false;
     }
+    
+    function appointment($table, $foglalasNapja, $foglalasOraja)
+    {
+        $foglalasNapja = $this->prepareData($foglalasNapja);
+        $foglalasOraja = $this->prepareData($foglalasOraja);
+        $this->sql =
+            "INSERT INTO " . $table . " (foglalasNapja, foglalasOraja) 
+			VALUES ('" . $foglalasNapja . "','" . $foglalasOraja . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+    
 	
 
 }
