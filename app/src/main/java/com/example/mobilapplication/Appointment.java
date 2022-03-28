@@ -24,6 +24,7 @@ public class Appointment extends AppCompatActivity {
 
     Spinner daySpinner, hourSpinner;
     Button appointment;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,14 @@ public class Appointment extends AppCompatActivity {
         String[] hours = new String[]{"10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"};
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hours);
         hourSpinner.setAdapter(adapter1);
-
+        //Intent intent = getIntent();
+        //if(intent.getExtras().isEmpty())
+       // {
+        //    username = "Felhasználó";
+        //}else{
+         //   username = intent.getExtras().getString("Username");
+        //}
+        username = "jóska";
         appointment.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -58,20 +66,23 @@ public class Appointment extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[2];
+                            String[] field = new String[3];
                             field[0] = "foglalasNapja";
                             field[1] = "foglalasOraja";
+                            field[2] = "felhasznalonev";
                             //Creating array for data
-                            String[] data = new String[2];
+                            String[] data = new String[3];
                             data[0] = day;
                             data[1] = hour;
+                            data[2] = username;
                             PutData putData = new PutData("http://10.0.11.107/kutyakozmetikaphp/order.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     if(result.equals("Order Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                                        Intent intent = new Intent(getApplicationContext(), UserMenu.class);
+
                                         startActivity(intent);
                                         finish();
                                     }else{
