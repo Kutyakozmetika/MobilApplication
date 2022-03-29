@@ -33,8 +33,16 @@ public class Appointment extends AppCompatActivity {
 
         daySpinner = findViewById(R.id.Day);
         hourSpinner = findViewById(R.id.Hour);
-
         appointment = findViewById(R.id.Appointment);
+
+
+        Intent intent = getIntent();
+        if(intent.getExtras().isEmpty())
+        {
+            username = "Felhasználó";
+        }else{
+            username = intent.getExtras().getString("username");
+        }
 
 
 
@@ -53,9 +61,6 @@ public class Appointment extends AppCompatActivity {
             public void onClick(View v) {
                 String day = daySpinner.getSelectedItem().toString();
                 String hour = hourSpinner.getSelectedItem().toString();
-
-
-
                 if(!day.equals("")) {
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
@@ -79,7 +84,7 @@ public class Appointment extends AppCompatActivity {
                                     if(result.equals("Order Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), UserMenu.class);
-
+                                        intent.putExtra("username", username);
                                         startActivity(intent);
                                         finish();
                                     }else{

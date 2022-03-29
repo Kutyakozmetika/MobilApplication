@@ -25,7 +25,7 @@ public class UserMenu extends AppCompatActivity {
         {
             username = "Felhasználó";
         }else{
-            username = intent.getExtras().getString("Username");
+            username = intent.getExtras().getString("username");
         }
 
         AppointmentButton.setOnClickListener(new View.OnClickListener()
@@ -33,8 +33,8 @@ public class UserMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Appointment.class);
-                username = intent.getStringExtra("Username");
-                intent.putExtra("Username", username);
+
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }
