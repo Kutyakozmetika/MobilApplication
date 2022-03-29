@@ -36,6 +36,8 @@ public class Appointment extends AppCompatActivity {
 
         appointment = findViewById(R.id.Appointment);
 
+
+
         String[] days = new String[]{"Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, days);
         daySpinner.setAdapter(adapter);
@@ -43,20 +45,15 @@ public class Appointment extends AppCompatActivity {
         String[] hours = new String[]{"10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"};
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hours);
         hourSpinner.setAdapter(adapter1);
-        //Intent intent = getIntent();
-        //if(intent.getExtras().isEmpty())
-       // {
-        //    username = "Felhasználó";
-        //}else{
-         //   username = intent.getExtras().getString("Username");
-        //}
-        username = "jóska";
+
+
         appointment.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String day = daySpinner.getSelectedItem().toString();
                 String hour = hourSpinner.getSelectedItem().toString();
+
 
 
                 if(!day.equals("")) {
