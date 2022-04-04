@@ -32,7 +32,7 @@ public class RegisterUser {
                     data[3] = user.getPhoneNumber();
                     data[4] = user.getUsername();
                     data[5] = user.getPassword();
-                    PutData putData = new PutData("http://10.0.11.107/kutyakozmetikaphp/signup.php", "POST", field, data);
+                    PutData putData = new PutData("http://10.0.11.106/kutyakozmetikaphp/signup.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();

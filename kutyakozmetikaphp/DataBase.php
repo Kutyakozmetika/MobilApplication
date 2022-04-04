@@ -69,13 +69,14 @@ class DataBase
         } else return false;
     }
     
-    function appointment($table, $foglalasNapja, $foglalasOraja)
+    function appointment($table, $foglalasNapja, $foglalasOraja, $felhasznalonev)
     {
         $foglalasNapja = $this->prepareData($foglalasNapja);
         $foglalasOraja = $this->prepareData($foglalasOraja);
+        $felhasznalonev = $this->prepareData($felhasznalonev);
         $this->sql =
-            "INSERT INTO " . $table . " (foglalasNapja, foglalasOraja) 
-			VALUES ('" . $foglalasNapja . "','" . $foglalasOraja . "')";
+            "INSERT INTO " . $table . " (foglalasNapja, foglalasOraja, felhasznalonev) 
+			VALUES ('" . $foglalasNapja . "','" . $foglalasOraja . "','" . $felhasznalonev . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
