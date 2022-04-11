@@ -1,59 +1,52 @@
 package com.example.mobilapplication;
-
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+public class RegisterDog  {
+    protected void putDataToDB(DogDatas dogDatas) {
 
-public class RegisterUser {
-
-    protected void putDataToDB(User user){
-
-        if(!user.getFullname().equals("") && !user.getAddress().equals("") && !user.getEmail().equals("") && !user.getPhoneNumber().equals("") && !user.getUsername().equals("") && !user.getPassword().equals("")  ) {
+        if (!dogDatas.getIsAgressive().equals("") && !dogDatas.getFurType().equals("") && !dogDatas.getAge().equals("")
+                && !dogDatas.getDogBreed().equals("") && !dogDatas.getUsersName().equals("")) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     String[] field = new String[6];
-                    field[0] = "nev";
-                    field[1] = "cim";
-                    field[2] = "email";
-                    field[3] = "telefonszam";
-                    field[4] = "felhasznalonev";
-                    field[5] = "jelszo";
+                    field[0] = "agresszivE";
+                    field[1] = "szorzetTipus";
+                    field[2] = "eletkor";
+                    field[3] = "fajta";
+                    field[4] = "tulajNev";
+
                     //Creating array for data
                     String[] data = new String[6];
-                    data[0] = user.getFullname();
-                    data[1] = user.getAddress();
-                    data[2] = user.getEmail();
-                    data[3] = user.getPhoneNumber();
-                    data[4] = user.getUsername();
-                    data[5] = user.getPassword();
-                    PutData putData = new PutData("http://192.168.56.1/kutyakozmetikaphp/signup.php", "POST", field, data);
+                    data[0] = dogDatas.getIsAgressive();
+                    data[1] = dogDatas.getFurType();
+                    data[2] = dogDatas.getAge();
+                    data[3] = dogDatas.getDogBreed();
+                    data[4] = dogDatas.getUsersName();
+
+                    PutData putData = new PutData("http://192.168.56.1/kutyakozmetikaphp/dogsignup.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();
                             //if(result.equals("Sign Up Success")){
-                                //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         /*Intent intent = new Intent(getApplicationContext(), Login.class);
                                         startActivity(intent);
                                         finish();*/
                             //}else{
-                                //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                             //}
                             //Log.i("PutData", result);
                         }
                     }
                 }
             });
-        }
-        else{
+        } else {
             //Toast.makeText(getApplicationContext(), "All fields required!", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

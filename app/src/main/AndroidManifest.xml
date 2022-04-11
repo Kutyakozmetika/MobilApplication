@@ -11,6 +11,9 @@
         android:theme="@style/Theme.MobilApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DogRegistration"
+            android:exported="false" />
+        <activity
             android:name=".OwnAppointment"
             android:exported="false" />
         <activity

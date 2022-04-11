@@ -13,4 +13,11 @@
     <string name="register_here">Regisztrálás itt</string>
     <string name="appointment">Időpont foglalás</string>
     <string name="myAppointment">Saját időpontok</string>
+    <string name="dogRegister">Kutyám adatai</string>
+    <string name="kutyaAdatok">Kutyám adatai</string>
+    <string name="Agressiv">Agresszív-e</string>
+    <string name="furType">Szorzet Tipus</string>
+    <string name="age">Életkor</string>
+    <string name="Fajta">Kutya fajtája</string>
+    <string name="usersName">Tulaj neve</string>
 </resources>

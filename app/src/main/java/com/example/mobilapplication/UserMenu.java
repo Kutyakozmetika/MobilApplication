@@ -9,8 +9,9 @@ import android.widget.Button;
 
 public class UserMenu extends AppCompatActivity {
 
-    Button AppointmentButton,ownappointmentButton;
+    Button AppointmentButton,ownappointmentButton, dogregisterButton;
     String username;
+    String usersFullname;
 
 
 
@@ -20,6 +21,7 @@ public class UserMenu extends AppCompatActivity {
         setContentView(R.layout.activity_user_menu);
         AppointmentButton = findViewById(R.id.appointmentBt);
         ownappointmentButton = findViewById(R.id.MyAppointmentsBt);
+        dogregisterButton = findViewById(R.id.dogRegisterBt);
         Intent intent = getIntent();
         if(intent.getExtras().isEmpty())
         {
@@ -36,6 +38,25 @@ public class UserMenu extends AppCompatActivity {
 
                 intent.putExtra("username", username);
                 startActivity(intent);
+                finish();
+            }
+        });
+        Intent dogIntent = getIntent();
+        if(dogIntent.getExtras().isEmpty()){
+            usersFullname = "tulajNev";
+        }else{
+            usersFullname = intent.getExtras().getString("tulajNev");
+        }
+
+        dogregisterButton.setOnClickListener(new View.OnClickListener(){
+
+
+            @Override
+            public void onClick(View v) {
+                Intent dogIntent = new Intent(getApplicationContext(),DogRegistration.class);
+
+                dogIntent.putExtra("tulajNev",usersFullname);
+                startActivity(dogIntent);
                 finish();
             }
         });
