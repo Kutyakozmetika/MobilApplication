@@ -69,6 +69,21 @@ class DataBase
         } else return false;
     }
     
+	function dogsignUp($table, $agresszivE, $szorzetTipus, $eletkor, $fajta, $tulajNev)
+    {
+        $agresszivE = $this->prepareData($agresszivE);
+        $szorzetTipus = $this->prepareData($szorzetTipus);
+        $eletkor = $this->prepareData($eletkor);
+        $fajta = $this->prepareData($fajta);
+        $tulajNev = $this->prepareData($tulajNev);
+        $this->sql =
+            "INSERT INTO " . $table . " (agresszivE, szorzetTipus, eletkor, fajta, tulajNev) 
+			VALUES ('" . $agresszivE . "','" . $szorzetTipus . "','" . $eletkor . "','" . $fajta . "','" . $tulajNev . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+	
     function appointment($table, $foglalasNapja, $foglalasOraja, $felhasznalonev)
     {
         $foglalasNapja = $this->prepareData($foglalasNapja);
