@@ -1,6 +1,7 @@
 package com.example.mobilapplication;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,11 +28,18 @@ public class Appointment extends AppCompatActivity {
     Spinner daySpinner, hourSpinner;
     Button appointment;
     String username;
+    ImageButton back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
+
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         daySpinner = findViewById(R.id.Day);
         hourSpinner = findViewById(R.id.Hour);
@@ -77,7 +87,7 @@ public class Appointment extends AppCompatActivity {
                             data[0] = day;
                             data[1] = hour;
                             data[2] = username;
-                            PutData putData = new PutData("http://10.0.11.106/kutyakozmetikaphp/order.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/order.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -101,6 +111,18 @@ public class Appointment extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "All fields required!", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
+
+       /* back = (ImageButton) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Appointment.this,DogRegistration.class);
+                startActivity(intent);
+                finish();
+            }
+        });*/
     }
 }

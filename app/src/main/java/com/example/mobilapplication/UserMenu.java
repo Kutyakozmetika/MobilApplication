@@ -11,7 +11,7 @@ public class UserMenu extends AppCompatActivity {
 
     Button AppointmentButton,ownappointmentButton, dogregisterButton;
     String username;
-    String usersFullname;
+
 
 
 
@@ -35,31 +35,21 @@ public class UserMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Appointment.class);
-
                 intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }
         });
-        Intent dogIntent = getIntent();
-        if(dogIntent.getExtras().isEmpty()){
-            usersFullname = "tulajNev";
-        }else{
-            usersFullname = intent.getExtras().getString("tulajNev");
-        }
-
-        dogregisterButton.setOnClickListener(new View.OnClickListener(){
-
-
+        dogregisterButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                Intent dogIntent = new Intent(getApplicationContext(),DogRegistration.class);
-
-                dogIntent.putExtra("tulajNev",usersFullname);
-                startActivity(dogIntent);
+            public void onClick(View v2) {
+                Intent intent = new Intent(getApplicationContext(), DogRegistration.class);
+                startActivity(intent);
                 finish();
             }
         });
+
 
     }
 }

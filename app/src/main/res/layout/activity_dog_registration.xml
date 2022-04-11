@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_blue"
     tools:context=".DogRegistration">
     <TextView
         android:id="@+id/textView"
@@ -19,19 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="jelly_bean" />
 
-    <Spinner
-        android:id="@+id/Agressiv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:contentDescription="@string/Agressiv"
-        android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="30dp">
 
-    </Spinner>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutAgressive"
         android:layout_width="match_parent"
@@ -47,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputLayoutAgressive"
+            android:id="@+id/agressive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="DuplicateIds,TextContrastCheck"
@@ -64,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Agressiv">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAgressive">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/furType"
@@ -109,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAge">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Fajta"
+            android:id="@+id/breed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="TextContrastCheck"
@@ -152,6 +141,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUsersname"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
