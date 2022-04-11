@@ -15,7 +15,7 @@ public class RegisterDog  {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    String[] field = new String[6];
+                    String[] field = new String[5];
                     field[0] = "agresszivE";
                     field[1] = "szorzetTipus";
                     field[2] = "eletkor";
@@ -23,7 +23,7 @@ public class RegisterDog  {
                     field[4] = "tulajNev";
 
                     //Creating array for data
-                    String[] data = new String[6];
+                    String[] data = new String[5];
                     data[0] = dogDatas.getIsAgressive();
                     data[1] = dogDatas.getFurType();
                     data[2] = dogDatas.getAge();
