@@ -16,7 +16,7 @@ public class Registration extends AppCompatActivity {
     TextInputEditText textInputEditTextFullname, textInputEditTextUsername,textInputEditTextPassword,textInputEditTextEmail, textInputLayoutAddress, textInputLayoutPhoneNumber;
     Button registerButton;
     RegisterUser registerUser;
-    TextView loginText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

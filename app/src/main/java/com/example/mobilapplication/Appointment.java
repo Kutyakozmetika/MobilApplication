@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,12 +21,20 @@ import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Appointment extends AppCompatActivity {
 
-    Spinner daySpinner, hourSpinner;
+    Spinner daySpinner, hourSpinner,serviceSpinner;
     Button appointment;
     String username;
     ImageButton back;
@@ -44,6 +53,10 @@ public class Appointment extends AppCompatActivity {
         daySpinner = findViewById(R.id.Day);
         hourSpinner = findViewById(R.id.Hour);
         appointment = findViewById(R.id.Appointment);
+
+        serviceSpinner = (Spinner) findViewById(R.id.Service);
+
+        getJSON("http://192.168.56.1/kutyakozmetikaphp/szolgaltatasFetch.php");
 
 
         Intent intent = getIntent();
@@ -71,6 +84,8 @@ public class Appointment extends AppCompatActivity {
             public void onClick(View v) {
                 String day = daySpinner.getSelectedItem().toString();
                 String hour = hourSpinner.getSelectedItem().toString();
+                String serviceName = serviceSpinner.getSelectedItem().toString();
+
                 if(!day.equals("")) {
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
@@ -78,16 +93,18 @@ public class Appointment extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[3];
+                            String[] field = new String[4];
                             field[0] = "foglalasNapja";
                             field[1] = "foglalasOraja";
                             field[2] = "felhasznalonev";
+                            field[3] = "szolgaltatasNev";
                             //Creating array for data
-                            String[] data = new String[3];
+                            String[] data = new String[4];
                             data[0] = day;
                             data[1] = hour;
                             data[2] = username;
-                            PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/order.php", "POST", field, data);
+                            data[3] = serviceName;
+                            PutData putData = new PutData("http://192.168.56.1/kutyakozmetikaphp/order.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -114,15 +131,58 @@ public class Appointment extends AppCompatActivity {
 
         });
 
-       /* back = (ImageButton) findViewById(R.id.back);
+    }
+    private void getJSON(final String urlWebService) {
 
-        back.setOnClickListener(new View.OnClickListener() {
+        class GetJSON extends AsyncTask<Void, Void, String> {
+
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Appointment.this,DogRegistration.class);
-                startActivity(intent);
-                finish();
+            protected void onPreExecute() {
+                super.onPreExecute();
             }
-        });*/
+
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                try {
+                    loadIntoListView(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        GetJSON getJSON = new GetJSON();
+        getJSON.execute();
+    }
+
+    private void loadIntoListView(String json) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+        String[] betoltottAdat = new String[jsonArray.length()];
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+            betoltottAdat[i] = obj.getString("szolgaltatasNev");
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, betoltottAdat);
+        serviceSpinner.setAdapter(adapter);
     }
 }

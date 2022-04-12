@@ -2,14 +2,12 @@ package com.example.mobilapplication;
 
 public class DogDatas {
     private String isAgressive;
-    private String furType;
     private String age;
     private String dogBreed;
     private String usersName;
 
-    public DogDatas(String isAgressive, String furType, String age, String dogBreed, String usersName) {
+    public DogDatas(String isAgressive,  String age, String dogBreed, String usersName) {
         this.isAgressive = isAgressive;
-        this.furType = furType;
         this.age = age;
         this.dogBreed = dogBreed;
         this.usersName = usersName;
@@ -23,13 +21,6 @@ public class DogDatas {
         this.isAgressive = isAgressive;
     }
 
-    public String getFurType() {
-        return furType;
-    }
-
-    public void setFurType(String furType) {
-        this.furType = furType;
-    }
 
     public String getAge() {
         return age;
