@@ -22,13 +22,13 @@ public class RegisterDog  {
                     field[3] = "tulajNev";
 
                     //Creating array for data
-                    String[] data = new String[5];
+                    String[] data = new String[4];
                     data[0] = dogDatas.getIsAgressive();
                     data[1] = dogDatas.getAge();
                     data[2] = dogDatas.getDogBreed();
                     data[3] = dogDatas.getUsersName();
 
-                    PutData putData = new PutData("http://192.168.56.1/kutyakozmetikaphp/dogsignup.php", "POST", field, data);
+                    PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/dogsignup.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();

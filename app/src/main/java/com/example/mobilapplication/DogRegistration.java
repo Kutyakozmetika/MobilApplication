@@ -21,12 +21,10 @@ public class DogRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_registration);
         registerDog = new RegisterDog();
-
         textInputEditTextAgressive = findViewById(R.id.agressive);
         textInputEditTextAge = findViewById(R.id.age);
         textInputEditTextBreed = findViewById(R.id.breed);
         textInputEditTextUsersName = findViewById(R.id.usersname);
-
         registerButton = findViewById(R.id.registerButton);
 
         registerButton .setOnClickListener(new View.OnClickListener() {

@@ -55,8 +55,7 @@ public class Appointment extends AppCompatActivity {
         appointment = findViewById(R.id.Appointment);
 
         serviceSpinner = (Spinner) findViewById(R.id.Service);
-
-        getJSON("http://192.168.56.1/kutyakozmetikaphp/szolgaltatasFetch.php");
+        getJSON("http://192.168.100.56/kutyakozmetikaphp/szolgaltatasFetch.php");
 
 
         Intent intent = getIntent();
@@ -104,7 +103,7 @@ public class Appointment extends AppCompatActivity {
                             data[1] = hour;
                             data[2] = username;
                             data[3] = serviceName;
-                            PutData putData = new PutData("http://192.168.56.1/kutyakozmetikaphp/order.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/order.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -145,7 +144,7 @@ public class Appointment extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     loadIntoListView(s);
                 } catch (JSONException e) {
