@@ -20,4 +20,5 @@
     <string name="age">Életkor</string>
     <string name="Fajta">Kutya fajtája</string>
     <string name="usersName">Tulaj neve</string>
+    <string name="ownAppointment">Saját időpontok</string>
 </resources>

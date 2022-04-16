@@ -32,7 +32,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,26 +41,7 @@
             tools:ignore="DuplicateIds,TextContrastCheck"
             tools:targetApi="jelly_bean" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutFurType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:hint="@string/furType"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAgressive">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/furType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="TextContrastCheck"
-            tools:targetApi="jelly_bean" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutAge"
@@ -74,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFurType">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAgressive">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/age"
@@ -142,7 +122,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUsersname"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_blue"
+        app:srcCompat="@drawable/backicon"
+        android:layout_marginTop="60dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
 
+        tools:layout_editor_absoluteY="601dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

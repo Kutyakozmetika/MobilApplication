@@ -36,6 +36,7 @@ public class Appointment extends AppCompatActivity {
 
     Spinner daySpinner, hourSpinner,serviceSpinner;
     Button appointment;
+    ImageButton imageButton;
     String username;
     ImageButton back;
 
@@ -53,6 +54,7 @@ public class Appointment extends AppCompatActivity {
         daySpinner = findViewById(R.id.Day);
         hourSpinner = findViewById(R.id.Hour);
         appointment = findViewById(R.id.Appointment);
+        imageButton = findViewById(R.id.imageButton);
 
         serviceSpinner = (Spinner) findViewById(R.id.Service);
         getJSON("http://192.168.100.56/kutyakozmetikaphp/szolgaltatasFetch.php");
@@ -129,7 +131,15 @@ public class Appointment extends AppCompatActivity {
             }
 
         });
-
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserMenu.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     private void getJSON(final String urlWebService) {
 

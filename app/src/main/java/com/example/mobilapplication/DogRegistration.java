@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -13,7 +14,8 @@ import com.google.android.material.textfield.TextInputEditText;
 public class DogRegistration extends AppCompatActivity {
     TextInputEditText textInputEditTextAgressive,textInputEditTextAge,textInputEditTextBreed,textInputEditTextUsersName;
     Button registerButton;
-
+    ImageButton imageButton;
+    String username;
     RegisterDog registerDog;
 
     @Override
@@ -25,8 +27,8 @@ public class DogRegistration extends AppCompatActivity {
         textInputEditTextAge = findViewById(R.id.age);
         textInputEditTextBreed = findViewById(R.id.breed);
         textInputEditTextUsersName = findViewById(R.id.usersname);
-        registerButton = findViewById(R.id.registerButton);
 
+        registerButton = findViewById(R.id.registerButton);
         registerButton .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +39,24 @@ public class DogRegistration extends AppCompatActivity {
                         ,String.valueOf(textInputEditTextUsersName.getText()));
                 registerDog.putDataToDB(dogDatas);
                 Intent intent = new Intent(getApplicationContext(), UserMenu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        imageButton = findViewById(R.id.imageButton);
+        Intent intent = getIntent();
+        if(intent.getExtras().isEmpty())
+        {
+            username = "Felhasználó";
+        }else{
+            username = intent.getExtras().getString("username");
+        }
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserMenu.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }

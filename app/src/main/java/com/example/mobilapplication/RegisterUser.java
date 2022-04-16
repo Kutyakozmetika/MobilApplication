@@ -3,6 +3,7 @@ package com.example.mobilapplication;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -33,25 +34,8 @@ public class RegisterUser {
                     data[4] = user.getUsername();
                     data[5] = user.getPassword();
                     PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/signup.php", "POST", field, data);
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            String result = putData.getResult();
-                            //if(result.equals("Sign Up Success")){
-                                //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        /*Intent intent = new Intent(getApplicationContext(), Login.class);
-                                        startActivity(intent);
-                                        finish();*/
-                            //}else{
-                                //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                            //}
-                            //Log.i("PutData", result);
-                        }
-                    }
-                }
+                  }
             });
-        }
-        else{
-            //Toast.makeText(getApplicationContext(), "All fields required!", Toast.LENGTH_SHORT).show();
         }
     }
 }

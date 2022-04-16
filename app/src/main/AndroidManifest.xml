@@ -14,9 +14,6 @@
             android:name=".DogRegistration"
             android:exported="false" />
         <activity
-            android:name=".OwnAppointment"
-            android:exported="false" />
-        <activity
             android:name=".UserMenu"
             android:exported="true" />
         <activity

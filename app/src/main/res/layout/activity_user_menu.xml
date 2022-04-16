@@ -49,27 +49,15 @@
         android:id="@+id/dogRegisterBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:text="@string/dogRegister"
         android:textColor="#FFFFFF"
         android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
-    <Button
-        android:id="@+id/MyAppointmentsBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/myAppointment"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appointmentBt"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView2"
@@ -80,7 +68,7 @@
         android:src="@drawable/dogi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MyAppointmentsBt" />
+        app:layout_constraintTop_toBottomOf="@+id/dogRegisterBt" />
 
 
 

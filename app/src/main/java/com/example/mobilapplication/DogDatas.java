@@ -21,7 +21,6 @@ public class DogDatas {
         this.isAgressive = isAgressive;
     }
 
-
     public String getAge() {
         return age;
     }

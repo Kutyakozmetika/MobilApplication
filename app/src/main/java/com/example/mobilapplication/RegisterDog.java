@@ -29,16 +29,8 @@ public class RegisterDog  {
                     data[3] = dogDatas.getUsersName();
 
                     PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/dogsignup.php", "POST", field, data);
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            String result = putData.getResult();
-
-                        }
-                    }
                 }
             });
-        } else {
-            //Toast.makeText(getApplicationContext(), "All fields required!", Toast.LENGTH_SHORT).show();
         }
     }
 }
