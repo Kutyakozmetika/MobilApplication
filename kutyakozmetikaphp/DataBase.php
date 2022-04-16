@@ -69,29 +69,29 @@ class DataBase
         } else return false;
     }
     
-	function dogsignUp($table, $agresszivE, $szorzetTipus, $eletkor, $fajta, $tulajNev)
+	function dogsignUp($table, $agresszivE,$eletkor, $fajta, $tulajNev)
     {
         $agresszivE = $this->prepareData($agresszivE);
-        $szorzetTipus = $this->prepareData($szorzetTipus);
         $eletkor = $this->prepareData($eletkor);
         $fajta = $this->prepareData($fajta);
         $tulajNev = $this->prepareData($tulajNev);
         $this->sql =
-            "INSERT INTO " . $table . " (agresszivE, szorzetTipus, eletkor, fajta, tulajNev) 
-			VALUES ('" . $agresszivE . "','" . $szorzetTipus . "','" . $eletkor . "','" . $fajta . "','" . $tulajNev . "')";
+            "INSERT INTO " . $table . " (agresszivE, eletkor, fajta, tulajNev) 
+			VALUES ('" . $agresszivE . "','" . $eletkor . "','" . $fajta . "','" . $tulajNev . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
     }
 	
-    function appointment($table, $foglalasNapja, $foglalasOraja, $felhasznalonev)
+    function appointment($table, $foglalasNapja, $foglalasOraja, $felhasznalonev,$szolgaltatasNev)
     {
         $foglalasNapja = $this->prepareData($foglalasNapja);
         $foglalasOraja = $this->prepareData($foglalasOraja);
         $felhasznalonev = $this->prepareData($felhasznalonev);
+		$szolgaltatasNev = $this->prepareData($szolgaltatasNev);
         $this->sql =
-            "INSERT INTO " . $table . " (foglalasNapja, foglalasOraja, felhasznalonev) 
-			VALUES ('" . $foglalasNapja . "','" . $foglalasOraja . "','" . $felhasznalonev . "')";
+            "INSERT INTO " . $table . " (foglalasNapja, foglalasOraja, felhasznalonev, szolgaltatasNev) 
+			VALUES ('" . $foglalasNapja . "','" . $foglalasOraja . "','" . $felhasznalonev . "','" . $szolgaltatasNev . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;

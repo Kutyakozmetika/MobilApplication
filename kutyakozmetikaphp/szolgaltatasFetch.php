@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 $szolgaltatasTomb = array(); 
  
 //this is our sql query 
-$sql = "SELECT szolgaltatasnev FROM szolgaltatas;";
+$sql = "SELECT szolgaltatasNev FROM szolgaltatas;";
  
 //creating an statment with the query
 $stmt = $conn->prepare($sql);
@@ -31,14 +31,14 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
  
 //binding results for that statment 
-$stmt->bind_result($szolgaltatasnev);
+$stmt->bind_result($szolgaltatasNev);
  
 //looping through all the records
 while($stmt->fetch()){
  
  //pushing fetched data in an array 
  $temp = [
- 'szolgaltatasnev'=>$szolgaltatasnev,
+ 'szolgaltatasNev'=>$szolgaltatasNev,
  
  ];
  
