@@ -27,18 +27,18 @@ public class DogRegistration extends AppCompatActivity {
         textInputEditTextAge = findViewById(R.id.age);
         textInputEditTextBreed = findViewById(R.id.breed);
         textInputEditTextUsersName = findViewById(R.id.usersname);
-
         registerButton = findViewById(R.id.registerButton);
         registerButton .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                DogDatas dogDatas = new DogDatas(String.valueOf(textInputEditTextAgressive.getText())
+                DogDatas dogDatas = new DogDatas(
+                        String.valueOf(textInputEditTextAgressive.getText())
                         ,String.valueOf(textInputEditTextAge.getText())
                         ,String.valueOf(textInputEditTextBreed.getText())
                         ,String.valueOf(textInputEditTextUsersName.getText()));
                 registerDog.putDataToDB(dogDatas);
                 Intent intent = new Intent(getApplicationContext(), UserMenu.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }

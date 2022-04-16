@@ -1,8 +1,8 @@
 package com.example.mobilapplication;
-import android.content.Intent;
+
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.Toast;
+
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -29,6 +29,11 @@ public class RegisterDog  {
                     data[3] = dogDatas.getUsersName();
 
                     PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/dogsignup.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                        }
+                    }
                 }
             });
         }

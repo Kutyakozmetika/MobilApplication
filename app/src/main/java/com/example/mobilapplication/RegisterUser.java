@@ -34,7 +34,12 @@ public class RegisterUser {
                     data[4] = user.getUsername();
                     data[5] = user.getPassword();
                     PutData putData = new PutData("http://192.168.100.56/kutyakozmetikaphp/signup.php", "POST", field, data);
-                  }
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                        }
+                    }
+                }
             });
         }
     }
