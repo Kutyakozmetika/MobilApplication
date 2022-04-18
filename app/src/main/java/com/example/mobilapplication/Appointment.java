@@ -38,7 +38,7 @@ public class Appointment extends AppCompatActivity {
     Button appointment;
     ImageButton imageButton;
     String username;
-    ImageButton back;
+
 
 
     @Override
@@ -68,8 +68,6 @@ public class Appointment extends AppCompatActivity {
             username = intent.getExtras().getString("username");
         }
 
-
-
         String[] days = new String[]{"Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, days);
         daySpinner.setAdapter(adapter);
@@ -77,7 +75,6 @@ public class Appointment extends AppCompatActivity {
         String[] hours = new String[]{"10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"};
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hours);
         hourSpinner.setAdapter(adapter1);
-
 
         appointment.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -129,7 +126,6 @@ public class Appointment extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "All fields required!", Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +145,6 @@ public class Appointment extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
             }
-
 
             @Override
             protected void onPostExecute(String s) {
